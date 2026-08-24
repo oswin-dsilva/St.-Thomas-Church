@@ -780,7 +780,7 @@ p {
     overflow: hidden;
 
     background-image:
-        url("../images/mass-schedule.jpg");
+        url("/images/mass-schedule.jpg");
 
     background-size: cover;
 
@@ -1157,7 +1157,7 @@ p {
 
 }
 
-}
+
 
 
 
