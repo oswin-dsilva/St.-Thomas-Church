@@ -8,716 +8,762 @@
     1. CSS VARIABLES
 ======================================================================*/
 
-:root {
+:root{
 
-    --primary: #c89b53;
-    --primary-dark: #af813c;
-    --green: #284a3f;
-    --white: #ffffff;
-    --background: #faf8f4;
-    --section: #f3efe8;
-    --text: #444444;
-    --heading: #2f4638;
-    --border: #e8e3db;
+    --primary:#c89b53;
+    --primary-dark:#af813c;
 
+    --green:#284a3f;
 
-    /* SPACING */
+    --white:#ffffff;
 
-    --space-xs: 10px;
-    --space-sm: 20px;
-    --space-md: 40px;
-    --space-lg: 70px;
-    --space-xl: 120px;
-    --space-xxl: 170px;
+    --background:#faf8f4;
+    --section:#f3efe8;
 
+    --text:#444444;
+    --heading:#2f4638;
+    --border:#e8e3db;
 
-    /* LAYOUT */
+    --space-xs:10px;
+    --space-sm:20px;
+    --space-md:40px;
+    --space-lg:70px;
+    --space-xl:120px;
+    --space-xxl:170px;
 
-    --container: 1200px;
-    --radius: 18px;
-    --radius-lg: 30px;
+    --container:1200px;
 
+    --radius:18px;
+    --radius-lg:30px;
 
-    /* SHADOWS */
+    --shadow-sm:0 8px 25px rgba(0,0,0,.06);
+    --shadow-md:0 20px 40px rgba(0,0,0,.08);
+    --shadow-lg:0 35px 80px rgba(0,0,0,.12);
 
-    --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 20px 40px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 35px 80px rgba(0, 0, 0, 0.12);
-
-
-    /* TRANSITION */
-
-    --transition: 0.35s ease;
+    --transition:.35s ease;
 
 }
-
 
 
 /*=====================================================================
     2. RESET
 ======================================================================*/
 
-* {
+*{
 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
-
-
-html {
-
-    scroll-behavior: smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 
 }
 
 
-body {
+html{
 
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    background: var(--background);
-    overflow-x: hidden;
+    scroll-behavior:smooth;
 
 }
 
 
-img {
+body{
 
-    width: 100%;
-    display: block;
+    font-family:'Inter',sans-serif;
 
-}
+    color:var(--text);
 
+    background:var(--background);
 
-a {
-
-    text-decoration: none;
-    color: inherit;
+    overflow-x:hidden;
 
 }
 
 
-ul {
+img{
 
-    list-style: none;
+    width:100%;
+
+    display:block;
+
+}
+
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
 
 }
 
 
-button {
+ul{
 
-    border: none;
-    background: none;
-    cursor: pointer;
+    list-style:none;
 
 }
 
+
+button{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+}
 
 
 /*=====================================================================
     3. GLOBAL STYLES
 ======================================================================*/
 
-.container {
+.container{
 
-    width: min(92%, var(--container));
-    margin: auto;
+    width:min(92%,var(--container));
 
-}
-
-
-.section {
-
-    padding: var(--space-xl) 0;
+    margin:auto;
 
 }
 
 
-.section-title {
+.section{
 
-    max-width: 700px;
-    margin: 0 auto 70px;
-    text-align: center;
+    padding:var(--space-xl) 0;
 
 }
 
 
-.section-title span {
+/*---------------------------------------------------------------------
+    FULL WINDOW SECTIONS
+----------------------------------------------------------------------*/
 
-    display: block;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 18px;
+.about,
+.schedule,
+.gallery,
+.reviews,
+.suvarta,
+.contact{
 
-}
+    position:relative;
 
+    width:100%;
 
-.section-title h2 {
-
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    color: var(--heading);
-    margin-bottom: 18px;
+    min-height:100vh;
 
 }
 
 
-.section-title p {
+.section-title{
 
-    font-size: 1.05rem;
-    line-height: 1.8;
+    max-width:700px;
+
+    margin:0 auto 70px;
+
+    text-align:center;
 
 }
 
+
+.section-title span{
+
+    display:block;
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
+
+.section-title h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    color:var(--heading);
+
+    margin-bottom:18px;
+
+}
+
+
+.section-title p{
+
+    font-size:1.05rem;
+
+    line-height:1.8;
+
+}
 
 
 /*=====================================================================
     4. TYPOGRAPHY
 ======================================================================*/
 
-h1 {
+h1{
 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    line-height: 1.1;
+    font-family:'Cormorant Garamond',serif;
 
-}
+    font-size:5rem;
 
-
-h2 {
-
-    font-family: 'Cormorant Garamond', serif;
+    line-height:1.1;
 
 }
 
 
-h3 {
+h2{
 
-    font-size: 1.35rem;
-    font-weight: 600;
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+
+h3{
+
+    font-size:1.35rem;
+
+    font-weight:600;
 
 }
 
 
-p {
+p{
 
-    line-height: 1.8;
+    line-height:1.8;
 
 }
-
 
 
 /*=====================================================================
     5. BUTTONS
 ======================================================================*/
 
-.btn {
+.btn{
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 34px;
-    border-radius: 50px;
-    transition: var(--transition);
-    font-weight: 600;
+    display:inline-flex;
 
-}
+    align-items:center;
 
+    justify-content:center;
 
-.btn-primary {
+    padding:16px 34px;
 
-    background: var(--primary);
-    color: #fff;
+    border-radius:50px;
+
+    transition:var(--transition);
+
+    font-weight:600;
 
 }
 
 
-.btn-primary:hover {
+.btn-primary{
 
-    background: var(--primary-dark);
-    transform: translateY(-3px);
+    background:var(--primary);
 
-}
-
-
-.btn-secondary {
-
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    color:#fff;
 
 }
 
 
-.btn-secondary:hover {
+.btn-primary:hover{
 
-    background: #fff;
-    color: #222;
+    background:var(--primary-dark);
+
+    transform:translateY(-3px);
 
 }
 
+
+.btn-secondary{
+
+    background:rgba(255,255,255,.15);
+
+    color:#fff;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.3);
+
+}
+
+
+.btn-secondary:hover{
+
+    background:#fff;
+
+    color:#222;
+
+}
 
 
 /*=====================================================================
     6. HEADER & NAVIGATION
 ======================================================================*/
 
-.header {
+.header{
 
-    position: fixed;
+    position:fixed;
 
-    top: 0;
+    top:0;
 
-    left: 0;
+    left:0;
 
-    width: 100%;
+    width:100%;
 
-    z-index: 1000;
+    z-index:1000;
 
-    background: transparent;
+    background:transparent;
 
-    box-shadow: none;
+    box-shadow:none;
 
-    transition: all .3s ease;
-
-}
-
-
-/*---------------------------------------------------------------------
-    HEADER CONTAINER
-----------------------------------------------------------------------*/
-
-.nav-container {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 18px 0;
+    transition:all .3s ease;
 
 }
 
+
+.nav-container{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    width:100%;
+
+    max-width:none;
+
+    margin:0;
+
+    padding-left:5px;
+
+    padding-right:20px;
+
+    padding-top:18px;
+
+    padding-bottom:18px;
+
+}
 
 
 /*---------------------------------------------------------------------
     LOGO
 ----------------------------------------------------------------------*/
 
-.logo {
+.logo{
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    justify-content: center;
+    justify-content:center;
 
-    flex-shrink: 0;
+    flex-shrink:0;
 
-    background: transparent;
+    margin-left:0;
 
-    padding: 0;
+    padding-left:0;
 
-    border-radius: 0;
+    background:transparent;
 
-    box-shadow: none;
+    border-radius:0;
 
-    transition: all .3s ease;
+    box-shadow:none;
 
-}
-
-
-.logo img {
-
-    width: 125px;
-
-    height: 125px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    display: block;
+    transition:all .3s ease;
 
 }
 
+
+.logo img{
+
+    width:125px;
+
+    height:125px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
 
 
 /*---------------------------------------------------------------------
     DESKTOP NAVIGATION
 ----------------------------------------------------------------------*/
 
-.navbar {
+.navbar{
 
-    position: absolute;
+    position:absolute;
 
-    left: 50%;
+    left:50%;
 
-    transform: translateX(-50%);
+    transform:translateX(-50%);
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    background: transparent;
+    background:transparent;
 
-    padding: 0;
+    padding:0;
 
-    border-radius: 0;
+    border-radius:0;
 
-    box-shadow: none;
+    box-shadow:none;
 
-    backdrop-filter: none;
+    backdrop-filter:none;
 
-    -webkit-backdrop-filter: none;
+    -webkit-backdrop-filter:none;
 
-}
+    transition:
 
+        opacity .4s ease,
 
-
-/*---------------------------------------------------------------------
-    NAVIGATION LIST
-----------------------------------------------------------------------*/
-
-.navbar ul {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 32px;
-
-    margin: 0;
-
-    padding: 0;
+        visibility .4s ease;
 
 }
 
 
+.navbar ul{
 
-/*---------------------------------------------------------------------
-    NAVIGATION LINKS
-----------------------------------------------------------------------*/
+    display:flex;
 
-.navbar a {
+    align-items:center;
 
-    font-size: 1.05rem;
+    justify-content:center;
 
-    font-weight: 500;
+    gap:32px;
 
-    color: #fff;
+    margin:0;
 
-    transition: var(--transition);
-
-    white-space: nowrap;
-
-    text-shadow: 0 1px 5px rgba(0,0,0,.25);
+    padding:0;
 
 }
 
 
-.navbar a:hover {
+.navbar a{
 
-    color: var(--primary);
+    font-size:1.05rem;
+
+    font-weight:500;
+
+    color:#fff;
+
+    transition:var(--transition);
+
+    white-space:nowrap;
+
+    text-shadow:0 1px 5px rgba(0,0,0,.25);
 
 }
 
 
-.navbar a.current {
+.navbar a:hover{
 
-    color: var(--primary);
+    color:var(--primary);
 
 }
 
+
+.navbar a.current{
+
+    color:var(--primary);
+
+}
 
 
 /*---------------------------------------------------------------------
     MOBILE MENU BUTTON
 ----------------------------------------------------------------------*/
 
-.menu-btn {
+.menu-btn{
 
-    display: none;
+    display:none;
 
-    width: 46px;
+    width:46px;
 
-    height: 46px;
+    height:46px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    align-items: center;
+    align-items:center;
 
-    justify-content: center;
+    justify-content:center;
 
-    color: #333;
+    color:#333;
 
-    font-size: 1.15rem;
+    font-size:1.15rem;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: .3s ease;
+    transition:.3s ease;
 
-    background: rgba(255,255,255,.92);
+    background:rgba(255,255,255,.92);
 
-    border: 0;
+    border:0;
 
-    box-shadow: 0 4px 18px rgba(0,0,0,.18);
+    box-shadow:0 4px 18px rgba(0,0,0,.18);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:blur(10px);
 
-    -webkit-backdrop-filter: blur(10px);
-
-}
-
-
-.menu-btn:hover {
-
-    background: #fff;
-
-    transform: translateY(-2px);
+    -webkit-backdrop-filter:blur(10px);
 
 }
 
 
-.menu-btn.open {
+.menu-btn:hover{
 
-    background: var(--primary);
+    background:#fff;
 
-    color: #fff;
+    transform:translateY(-2px);
 
 }
 
+
+.menu-btn.open{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
 
 
 /*---------------------------------------------------------------------
     SCROLLED HEADER
 ----------------------------------------------------------------------*/
 
-.header.scrolled {
+.header.scrolled{
 
-    background: transparent;
+    background:transparent;
 
-    box-shadow: none;
-
-}
-
-
-.header.scrolled .navbar {
-
-    background: transparent;
+    box-shadow:none;
 
 }
 
 
-.header.scrolled .navbar a {
+.header.scrolled .navbar{
 
-    color: #fff;
+    background:transparent;
+
+}
+
+
+.header.scrolled .navbar a{
+
+    color:#fff;
 
 }
 
 
-.header.scrolled .logo {
+.header.scrolled .logo{
 
-    background: transparent;
+    background:transparent;
 
-    box-shadow: none;
+    box-shadow:none;
 
 }
-
 
 
 /*---------------------------------------------------------------------
     HIDE NAVIGATION AFTER HERO
 ----------------------------------------------------------------------*/
 
-.navbar {
+.header.nav-hidden .navbar{
 
-    transition:
-        opacity .4s ease,
-        visibility .4s ease;
+    opacity:0;
 
-}
+    visibility:hidden;
 
-
-.header.nav-hidden .navbar {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
+    pointer-events:none;
 
 }
-
 
 
 /*=====================================================================
     7. HERO
 ======================================================================*/
 
-.hero {
+.hero{
 
-    position: relative;
+    position:relative;
 
-    min-height: 100vh;
+    width:100%;
 
-    display: flex;
+    min-height:100vh;
 
-    align-items: center;
+    display:flex;
 
-    justify-content: center;
+    align-items:center;
 
-    text-align: center;
+    justify-content:center;
 
-    overflow: hidden;
+    text-align:center;
+
+    overflow:hidden;
 
 }
 
 
-/*---------------------------------------------------------------------
-    HERO IMAGE
-----------------------------------------------------------------------*/
+.hero-image{
 
-.hero-image {
+    position:absolute;
 
-    position: absolute;
+    inset:-4%;
 
-    inset: -4%;
+    width:108%;
 
-    width: 108%;
+    height:108%;
 
-    height: 108%;
+    object-fit:cover;
 
-    object-fit: cover;
+    z-index:-2;
 
-    z-index: -2;
-
-    transform: scale(1);
+    transform:scale(1);
 
     transition:
+
         transform .15s linear,
+
         opacity .15s linear;
 
     will-change:
+
         transform,
+
         opacity;
 
 }
 
 
-.hero-overlay {
+.hero-overlay{
 
-    position: absolute;
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
     background:
+
         linear-gradient(
+
             rgba(0,0,0,.45),
+
             rgba(0,0,0,.45)
+
         );
 
-    z-index: -1;
+    z-index:-1;
 
 }
 
 
-.hero-content {
+.hero-content{
 
-    position: absolute;
+    position:absolute;
 
-    bottom: 45px;
+    bottom:45px;
 
-    left: 50%;
+    left:50%;
 
-    transform: translateX(-50%);
+    transform:translateX(-50%);
 
-    width: min(100%,720px);
+    width:min(100%,720px);
 
-    padding: 30px;
+    padding:30px;
 
 }
 
 
 /*---------------------------------------------------------------------
     HERO BUTTONS
+
+    HIDDEN ON DESKTOP.
+    SHOWN ONLY ON MOBILE.
 ----------------------------------------------------------------------*/
 
-/* Hidden on desktop */
+.hero-buttons{
 
-.hero-buttons {
-
-    display: none;
+    display:none;
 
 }
 
 
-.hero-buttons .btn {
+.hero-buttons .btn{
 
-    width: 100%;
+    width:100%;
 
-    min-height: 54px;
+    min-height:54px;
 
 }
-
 
 
 /*=====================================================================
     8. ABOUT
 ======================================================================*/
 
-.about {
+.about{
 
-    background: #faf8f4;
+    background:#faf8f4;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
 
 }
 
 
-.about-grid {
+.about-grid{
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap: 35px;
+    gap:35px;
 
 }
 
 
-.info-card {
+.info-card{
 
-    background: #fff;
+    background:#fff;
 
-    padding: 40px 35px;
+    padding:40px 35px;
 
-    border-radius: var(--radius);
+    border-radius:var(--radius);
 
-    box-shadow: var(--shadow-sm);
+    box-shadow:var(--shadow-sm);
 
-    transition: var(--transition);
+    transition:var(--transition);
 
-    border: 1px solid transparent;
+    border:1px solid transparent;
 
 }
 
 
-.info-card:hover {
+.info-card:hover{
 
-    transform: translateY(-10px);
+    transform:translateY(-10px);
 
-    box-shadow: var(--shadow-md);
+    box-shadow:var(--shadow-md);
 
     border-color:
         rgba(200,155,83,.3);
@@ -725,720 +771,714 @@ p {
 }
 
 
-.icon {
+.icon{
 
-    width: 65px;
+    width:65px;
 
-    height: 65px;
+    height:65px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: #f5efe5;
+    background:#f5efe5;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    margin-bottom: 25px;
+    margin-bottom:25px;
 
-    color: var(--primary);
+    color:var(--primary);
 
-    font-size: 1.5rem;
-
-}
-
-
-.info-card h3 {
-
-    margin-bottom: 15px;
-
-    color: var(--heading);
+    font-size:1.5rem;
 
 }
 
 
-.info-card p {
+.info-card h3{
 
-    font-size: .97rem;
+    margin-bottom:15px;
+
+    color:var(--heading);
 
 }
 
+
+.info-card p{
+
+    font-size:.97rem;
+
+}
 
 
 /*=====================================================================
     9. MASS TIMINGS
 ======================================================================*/
 
-.schedule {
+.schedule{
 
-    position: relative;
+    position:relative;
 
-    min-height: 100vh;
+    width:100%;
 
-    overflow: hidden;
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+/*---------------------------------------------------------------------
+    MASS SCHEDULE IMAGE
+----------------------------------------------------------------------*/
+
+.schedule::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
 
     background-image:
         url("../images/mass-schedule.jpg");
 
-    background-size: cover;
+    background-size:cover;
 
-    background-position: center;
+    background-position:center center;
 
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
+
+    z-index:0;
 
 }
-
 
 
 /*---------------------------------------------------------------------
     HERO → MASS TIMINGS TRANSITION
 ----------------------------------------------------------------------*/
 
-.schedule-transition {
+.schedule-transition{
 
-    position: absolute;
+    position:absolute;
 
-    top: 0;
+    top:0;
 
-    left: 0;
+    left:0;
 
-    width: 100%;
+    width:100%;
 
-    height: 180px;
+    height:180px;
 
-    pointer-events: none;
+    pointer-events:none;
 
-    z-index: 1;
+    z-index:1;
 
     background:
+
         linear-gradient(
+
             to bottom,
+
             rgba(0,0,0,.18),
+
             transparent
+
         );
 
 }
-
 
 
 /*---------------------------------------------------------------------
     MASS TIMINGS CONTENT
 ----------------------------------------------------------------------*/
 
-.schedule-content {
+.schedule-content{
 
-    position: absolute;
+    position:relative;
 
-    top: 0;
+    z-index:2;
 
-    left: 0;
-
-    width: 100%;
-
-    z-index: 2;
-
-    padding-top: 60px;
+    width:100%;
 
 }
-
-
-
-/*---------------------------------------------------------------------
-    MASS TIMINGS TITLE — WHITE HIGHLIGHT
-----------------------------------------------------------------------*/
-
-.schedule .section-title {
-
-    background: rgba(255,255,255,.88);
-
-    padding: 22px 35px;
-
-    border: 1px solid rgba(255,255,255,.95);
-
-    border-radius: 20px;
-
-    width: fit-content;
-
-    margin-left: auto;
-
-    margin-right: auto;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,.18);
-
-    backdrop-filter: blur(8px);
-
-    -webkit-backdrop-filter: blur(8px);
-
-}
-
 
 
 /*=====================================================================
-    10. CURRENT PRIESTS
+    10. CURRENT PRIESTS / GALLERY
 ======================================================================*/
 
-.gallery {
+.gallery{
 
-    background: #fff;
+    background:#fff;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
 
 }
 
 
-.gallery-grid {
+.gallery-grid{
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         repeat(4,1fr);
 
-    gap: 20px;
+    gap:20px;
 
 }
 
 
-.gallery-grid img {
+.gallery-grid img{
 
-    height: 280px;
+    height:280px;
 
-    object-fit: cover;
+    object-fit:cover;
 
-    border-radius: 18px;
+    border-radius:18px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: .45s;
+    transition:.45s;
 
-    box-shadow: var(--shadow-sm);
-
-}
-
-
-.gallery-grid img:hover {
-
-    transform: scale(1.04);
-
-    box-shadow: var(--shadow-lg);
+    box-shadow:var(--shadow-sm);
 
 }
 
+
+.gallery-grid img:hover{
+
+    transform:scale(1.04);
+
+    box-shadow:var(--shadow-lg);
+
+}
 
 
 /*=====================================================================
-    11. MINISTRIES
+    11. MINISTRIES / REVIEWS
 ======================================================================*/
 
-.reviews {
+.reviews{
 
-    background: #f6f2ea;
+    background:#f6f2ea;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
 
 }
 
 
-.review-wrapper {
+.review-wrapper{
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         1fr 1.2fr;
 
-    gap: 70px;
+    gap:70px;
 
-    align-items: center;
-
-}
-
-
-.rating-box h3 {
-
-    font-size: 2.5rem;
-
-    color: var(--heading);
+    align-items:center;
 
 }
 
 
-.rating-box p {
+.rating-box h3{
 
-    margin: 20px 0;
+    font-size:2.5rem;
 
-}
-
-
-.review-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 25px;
+    color:var(--heading);
 
 }
 
 
-.review-card {
+.rating-box p{
 
-    background: #fff;
-
-    padding: 30px;
-
-    border-radius: 18px;
-
-    box-shadow: var(--shadow-sm);
-
-    transition: .35s;
+    margin:20px 0;
 
 }
 
 
-.review-card:hover {
+.review-list{
 
-    transform: translateX(10px);
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+.review-card{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.35s;
 
 }
 
 
-.review-card h3 {
+.review-card:hover{
 
-    color: var(--heading);
-
-    margin-bottom: 10px;
+    transform:translateX(10px);
 
 }
 
+
+.review-card h3{
+
+    color:var(--heading);
+
+    margin-bottom:10px;
+
+}
 
 
 /*=====================================================================
-    SUVARTA ARTICLE
+    12. SUVARTA
 ======================================================================*/
 
-.suvarta-grid {
+.suvarta{
 
-    display: grid;
+    background:#faf8f4;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+.suvarta-grid{
+
+    display:grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(280px, 360px));
+        repeat(auto-fit,minmax(280px,360px));
 
-    justify-content: center;
+    justify-content:center;
 
-    gap: 30px;
-
-}
-
-
-/*---------------------------------------------------------------------
-    SUVARTA CARD
-----------------------------------------------------------------------*/
-
-.suvarta-card {
-
-    background: #fff;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow: var(--shadow-md);
-
-    transition: var(--transition);
+    gap:30px;
 
 }
 
 
-.suvarta-card:hover {
+.suvarta-card{
 
-    transform: translateY(-8px);
+    background:#fff;
 
-    box-shadow: var(--shadow-lg);
+    border-radius:18px;
 
-}
+    overflow:hidden;
 
+    box-shadow:var(--shadow-md);
 
-
-/*---------------------------------------------------------------------
-    SUVARTA IMAGE
-----------------------------------------------------------------------*/
-
-.suvarta-image {
-
-    width: 100%;
-
-    height: 190px;
-
-    object-fit: contain;
-
-    display: block;
+    transition:var(--transition);
 
 }
 
 
+.suvarta-card:hover{
 
-/*---------------------------------------------------------------------
-    SUVARTA CONTENT
-----------------------------------------------------------------------*/
+    transform:translateY(-8px);
 
-.suvarta-card-content {
-
-    padding: 25px;
+    box-shadow:var(--shadow-lg);
 
 }
 
 
-.suvarta-date {
+.suvarta-image{
 
-    font-size: .85rem;
+    width:100%;
 
-    color: #777;
+    height:240px;
 
-    margin-bottom: 10px;
+    object-fit:cover;
+
+    object-position:center;
+
+    display:block;
 
 }
 
 
-.suvarta-card h3 {
+.suvarta-card-content{
+
+    padding:25px;
+
+}
+
+
+.suvarta-date{
+
+    font-size:.85rem;
+
+    color:#777;
+
+    margin-bottom:10px;
+
+}
+
+
+.suvarta-card h3{
 
     font-family:
         'Cormorant Garamond',
         serif;
 
-    font-size: 1.8rem;
+    font-size:1.8rem;
 
-    color: var(--heading);
+    color:var(--heading);
 
-    margin-bottom: 10px;
-
-}
-
-
-.suvarta-card p {
-
-    color: var(--text);
-
-    margin-bottom: 20px;
+    margin-bottom:10px;
 
 }
 
 
+.suvarta-card p{
 
-/*---------------------------------------------------------------------
-    READ MORE
-----------------------------------------------------------------------*/
+    color:var(--text);
 
-.suvarta-read-more {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--primary);
-
-    font-weight: 600;
-
-    transition: var(--transition);
+    margin-bottom:20px;
 
 }
 
 
-.suvarta-read-more:hover {
+.suvarta-read-more{
 
-    color: var(--primary-dark);
+    display:inline-flex;
 
-    transform: translateX(4px);
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    transition:var(--transition);
 
 }
 
 
-.suvarta-read-more i {
+.suvarta-read-more:hover{
 
-    font-size: .8rem;
+    color:var(--primary-dark);
+
+    transform:translateX(4px);
 
 }
 
-}
 
+.suvarta-read-more i{
+
+    font-size:.8rem;
+
+}
 
 
 /*=====================================================================
     13. CONTACT
 ======================================================================*/
 
-.contact {
+.contact{
 
-    background: #fff;
+    background:#fff;
 
-}
+    min-height:100vh;
 
+    display:flex;
 
-.contact-grid {
-
-    display: grid;
-
-    grid-template-columns: 420px 1fr;
-
-    gap: 60px;
-
-    align-items: center;
+    align-items:center;
 
 }
 
 
-.contact h2 {
+.contact-grid{
 
-    font-size: 3rem;
+    display:grid;
 
-    margin-bottom: 25px;
+    grid-template-columns:
+        420px 1fr;
 
-    color: var(--heading);
+    gap:60px;
 
-}
-
-
-.contact p {
-
-    margin-bottom: 20px;
+    align-items:center;
 
 }
 
 
-.contact strong {
+.contact h2{
 
-    color: var(--heading);
+    font-size:3rem;
+
+    margin-bottom:25px;
+
+    color:var(--heading);
+
+}
+
+
+.contact p{
+
+    margin-bottom:20px;
 
 }
 
 
-.contact iframe {
+.contact strong{
 
-    width: 100%;
-
-    height: 420px;
-
-    border: none;
-
-    border-radius: 20px;
-
-    box-shadow: var(--shadow-md);
+    color:var(--heading);
 
 }
 
+
+.contact iframe{
+
+    width:100%;
+
+    height:420px;
+
+    border:none;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow-md);
+
+}
 
 
 /*=====================================================================
     14. FOOTER
 ======================================================================*/
 
-.footer {
+.footer{
 
-    background: var(--green);
+    background:var(--green);
 
-    color: #fff;
+    color:#fff;
 
-    text-align: center;
+    text-align:center;
 
-    padding: 60px 20px;
-
-}
-
-
-.footer h3 {
-
-    font-family: 'Cormorant Garamond',serif;
-
-    font-size: 2rem;
-
-    margin-bottom: 20px;
+    padding:60px 20px;
 
 }
 
 
-.footer p {
+.footer h3{
 
-    opacity: .8;
+    font-family:
+        'Cormorant Garamond',
+        serif;
 
-    margin-bottom: 12px;
+    font-size:2rem;
+
+    margin-bottom:20px;
 
 }
 
+
+.footer p{
+
+    opacity:.8;
+
+    margin-bottom:12px;
+
+}
 
 
 /*=====================================================================
     15. SCROLL ANIMATIONS
 ======================================================================*/
 
-.hidden {
+.hidden{
 
-    opacity: 0;
+    opacity:0;
 
-    transform: translateY(50px);
+    transform:translateY(50px);
 
-    transition: .8s ease;
-
-}
-
-
-.show {
-
-    opacity: 1;
-
-    transform: translateY(0);
+    transition:.8s ease;
 
 }
 
+
+.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
 
 
 /*=====================================================================
     16. LIGHTBOX
 ======================================================================*/
 
-#lightbox {
+#lightbox{
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background: rgba(0,0,0,.9);
+    background:rgba(0,0,0,.9);
 
-    display: none;
+    display:none;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    padding: 30px;
+    padding:30px;
 
-    z-index: 5000;
-
-}
-
-
-#lightbox.active {
-
-    display: flex;
+    z-index:5000;
 
 }
 
 
-#lightbox img {
+#lightbox.active{
 
-    width: min(90%,1000px);
-
-    max-height: 90vh;
-
-    object-fit: contain;
-
-    border-radius: 20px;
+    display:flex;
 
 }
 
+
+#lightbox img{
+
+    width:min(90%,1000px);
+
+    max-height:90vh;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+}
 
 
 /*=====================================================================
     17. BACK TO TOP
 ======================================================================*/
 
-.back-top {
+.back-top{
 
-    position: fixed;
+    position:fixed;
 
-    bottom: 35px;
+    bottom:35px;
 
-    right: 35px;
+    right:35px;
 
-    width: 55px;
+    width:55px;
 
-    height: 55px;
+    height:55px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: var(--primary);
+    background:var(--primary);
 
-    color: #fff;
+    color:#fff;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    opacity: 0;
+    opacity:0;
 
-    pointer-events: none;
+    pointer-events:none;
 
-    transition: .3s;
+    transition:.3s;
 
-    box-shadow: var(--shadow-md);
+    box-shadow:var(--shadow-md);
 
-    z-index: 999;
-
-}
-
-
-.back-top.show {
-
-    opacity: 1;
-
-    pointer-events: auto;
+    z-index:999;
 
 }
 
 
-.back-top:hover {
+.back-top.show{
 
-    transform: translateY(-5px);
+    opacity:1;
+
+    pointer-events:auto;
 
 }
 
+
+.back-top:hover{
+
+    transform:translateY(-5px);
+
+}
 
 
 /*=====================================================================
     18. CUSTOM SCROLLBAR
 ======================================================================*/
 
-::-webkit-scrollbar {
+::-webkit-scrollbar{
 
-    width: 12px;
-
-}
-
-
-::-webkit-scrollbar-track {
-
-    background: #ece7df;
+    width:12px;
 
 }
 
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-track{
 
-    background: var(--primary);
-
-    border-radius: 20px;
+    background:#ece7df;
 
 }
 
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb{
 
-    background: var(--primary-dark);
+    background:var(--primary);
+
+    border-radius:20px;
 
 }
 
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
 
 
 /*=====================================================================
-    19. RESPONSIVE
+    19. RESPONSIVE — 1100px
 ======================================================================*/
 
-@media (max-width:1100px) {
+@media (max-width:1100px){
 
     .about-grid,
     .schedule-grid,
-    .gallery-grid {
+    .gallery-grid{
 
         grid-template-columns:
             repeat(2,1fr);
@@ -1447,118 +1487,113 @@ p {
 
 
     .contact-grid,
-    .review-wrapper {
+    .review-wrapper{
 
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
 
     }
 
 }
 
 
+/*=====================================================================
+    20. MOBILE — 900px
+======================================================================*/
 
-@media (max-width:900px) {
-
+@media (max-width:900px){
 
     /*---------------------------------------------------------------
-        MOBILE HEADER
+        MOBILE NAVIGATION
     ----------------------------------------------------------------*/
 
-    .navbar {
+    .navbar{
 
-        position: fixed;
+        position:fixed;
 
-        top: 85px;
+        top:85px;
 
-        right: -320px;
+        right:-320px;
 
-        width: 280px;
+        width:280px;
 
-        background: rgba(255,255,255,.98);
+        background:rgba(255,255,255,.98);
 
-        box-shadow: var(--shadow-lg);
+        box-shadow:var(--shadow-lg);
 
-        border-radius: 18px;
+        border-radius:18px;
 
-        padding: 28px;
+        padding:28px;
 
-        transition: right .4s ease;
+        transition:right .4s ease;
 
-        z-index: 999;
-
-    }
-
-
-    .navbar.active {
-
-        right: 20px;
+        z-index:999;
 
     }
 
 
-    .navbar ul {
+    .navbar.active{
 
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 0;
+        right:20px;
 
     }
 
 
-    .navbar li {
+    .navbar ul{
 
-        width: 100%;
+        display:flex;
 
-    }
+        flex-direction:column;
 
-
-    .navbar a {
-
-        display: flex;
-
-        align-items: center;
-
-        width: 100%;
-
-        padding: 15px 5px;
-
-        color: #333 !important;
-
-        font-size: .95rem;
-
-        border-bottom: 1px solid #eee;
+        gap:0;
 
     }
 
 
-    .navbar li:last-child a {
+    .navbar li{
 
-        border-bottom: none;
-
-    }
-
-
-    .navbar a:hover {
-
-        color: var(--primary) !important;
-
-        padding-left: 10px;
+        width:100%;
 
     }
 
 
-    .menu-btn {
+    .navbar a{
 
-        display: flex;
+        display:flex;
+
+        align-items:center;
+
+        width:100%;
+
+        padding:15px 5px;
+
+        color:#333 !important;
+
+        font-size:.95rem;
+
+        border-bottom:1px solid #eee;
 
     }
 
 
-    .nav-container {
+    .navbar li:last-child a{
 
-        padding: 12px 0;
+        border-bottom:none;
+
+    }
+
+
+    .navbar a:hover{
+
+        color:var(--primary) !important;
+
+        padding-left:10px;
+
+    }
+
+
+    .menu-btn{
+
+        display:flex;
 
     }
 
@@ -1567,258 +1602,335 @@ p {
         MOBILE LOGO
     ----------------------------------------------------------------*/
 
-    .logo img {
+    .logo img{
 
-        width: 65px;
+        width:65px;
 
-        height: 65px;
-
-    }
-
-
-    /*---------------------------------------------------------------
-        MOBILE HERO BUTTONS
-    ----------------------------------------------------------------*/
-
-    .hero-buttons {
-
-        display: grid;
-
-        grid-template-columns: 1fr 1fr;
-
-        width: min(100%,360px);
-
-        margin: 0 auto;
-
-        gap: 12px;
-
-    }
-
-
-    .hero-buttons .btn {
-
-        min-height: 50px;
-
-        padding: 13px 8px;
-
-        font-size: .82rem;
+        height:65px;
 
     }
 
 
     /*---------------------------------------------------------------
-        MASS TIMINGS
+        MOBILE HERO
     ----------------------------------------------------------------*/
 
-    .schedule {
+    .hero-content{
 
-        min-height: 100vh;
+        width:100%;
 
-    }
-
-
-    .schedule-transition {
-
-        height: 120px;
+        padding:20px;
 
     }
 
 
-    .schedule-content {
+    /*---------------------------------------------------------------
+        HERO BUTTONS — MOBILE ONLY
+    ----------------------------------------------------------------*/
 
-        padding-top: 40px;
+    .hero-buttons{
+
+        display:grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        width:min(100%,360px);
+
+        margin:0 auto;
+
+        gap:12px;
 
     }
 
 
-    .schedule .section-title {
+    .hero-buttons .btn{
 
-        padding: 18px 25px;
+        width:100%;
 
-        max-width: calc(100% - 30px);
+        min-height:50px;
+
+        padding:13px 8px;
+
+        font-size:.82rem;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        MOBILE FULL-WINDOW SECTIONS
+    ----------------------------------------------------------------*/
+
+    .about,
+    .schedule,
+    .gallery,
+    .reviews,
+    .suvarta,
+    .contact{
+
+        min-height:100vh;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        MASS SCHEDULE
+    ----------------------------------------------------------------*/
+
+    .schedule{
+
+        min-height:100vh;
+
+    }
+
+
+    .schedule::before{
+
+        background-position:center center;
+
+    }
+
+
+    .schedule-transition{
+
+        height:120px;
+
+    }
+
+
+    .schedule-content{
+
+        padding-top:0;
 
     }
 
 }
 
 
+/*=====================================================================
+    21. MOBILE — 768px
+======================================================================*/
 
-@media (max-width:768px) {
+@media (max-width:768px){
 
+    .section{
 
-    .section {
-
-        padding: 90px 0;
-
-    }
-
-
-    .section-title {
-
-        margin-bottom: 50px;
+        padding:90px 0;
 
     }
 
 
-    .section-title h2 {
+    .section-title{
 
-        font-size: 2.4rem;
+        margin-bottom:50px;
+
+    }
+
+
+    .section-title h2{
+
+        font-size:2.4rem;
 
     }
 
 
     .about-grid,
     .schedule-grid,
-    .gallery-grid {
+    .gallery-grid{
 
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .gallery-grid img {
-
-        height: 250px;
+        grid-template-columns:1fr;
 
     }
 
 
-    .review-wrapper {
+    .gallery-grid img{
 
-        gap: 40px;
-
-    }
-
-
-    .contact-grid {
-
-        gap: 35px;
+        height:250px;
 
     }
 
 
-    .contact iframe {
+    .review-wrapper{
 
-        height: 300px;
+        gap:40px;
 
     }
 
-}
+
+    .contact-grid{
+
+        gap:35px;
+
+    }
 
 
+    .contact iframe{
 
-@media (max-width:500px) {
-
-
-    .container {
-
-        width: 94%;
+        height:300px;
 
     }
 
 
     /*---------------------------------------------------------------
-        MOBILE HERO BUTTONS
+        FULL-WINDOW SECTIONS ON TABLET/MOBILE
     ----------------------------------------------------------------*/
 
-    .hero-buttons {
+    .about,
+    .schedule,
+    .gallery,
+    .reviews,
+    .suvarta,
+    .contact{
 
-        grid-template-columns: 1fr;
-
-        width: min(100%,280px);
-
-    }
-
-
-    .hero h1 {
-
-        font-size: 2.5rem;
-
-    }
-
-
-    .info-card {
-
-        padding: 30px;
-
-    }
-
-
-    .schedule-card {
-
-        padding: 28px;
-
-    }
-
-
-    .schedule-transition {
-
-        height: 90px;
-
-    }
-
-
-    .schedule-content {
-
-        padding-top: 30px;
-
-    }
-
-
-    .schedule .section-title {
-
-        padding: 16px 20px;
-
-        border-radius: 16px;
-
-    }
-
-
-    .contact iframe {
-
-        height: 300px;
-
-    }
-
-
-    .footer {
-
-        padding: 45px 20px;
-
-    }
-
-
-    .back-top {
-
-        width: 48px;
-
-        height: 48px;
-
-        right: 20px;
-
-        bottom: 20px;
+        min-height:100vh;
 
     }
 
 }
 
 
+/*=====================================================================
+    22. MOBILE — 500px
+======================================================================*/
 
-@media (max-width:400px) {
+@media (max-width:500px){
 
+    .container{
 
-    .navbar {
-
-        width: calc(100% - 40px);
-
-        right: -100%;
+        width:94%;
 
     }
 
 
-    .navbar.active {
+    /*---------------------------------------------------------------
+        SMALL MOBILE HERO BUTTONS
+    ----------------------------------------------------------------*/
 
-        right: 20px;
+    .hero-buttons{
+
+        grid-template-columns:1fr;
+
+        width:min(100%,280px);
+
+    }
+
+
+    .hero h1{
+
+        font-size:2.5rem;
+
+    }
+
+
+    .info-card{
+
+        padding:30px;
+
+    }
+
+
+    .schedule-card{
+
+        padding:28px;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        MASS SCHEDULE
+    ----------------------------------------------------------------*/
+
+    .schedule::before{
+
+        background-position:center center;
+
+    }
+
+
+    .schedule-transition{
+
+        height:90px;
+
+    }
+
+
+    .schedule-content{
+
+        padding-top:0;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        SUVARTA
+    ----------------------------------------------------------------*/
+
+    .suvarta-image{
+
+        height:220px;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        CONTACT
+    ----------------------------------------------------------------*/
+
+    .contact iframe{
+
+        height:300px;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        FOOTER
+    ----------------------------------------------------------------*/
+
+    .footer{
+
+        padding:45px 20px;
+
+    }
+
+
+    /*---------------------------------------------------------------
+        BACK TO TOP
+    ----------------------------------------------------------------*/
+
+    .back-top{
+
+        width:48px;
+
+        height:48px;
+
+        right:20px;
+
+        bottom:20px;
+
+    }
+
+}
+
+
+/*=====================================================================
+    23. VERY SMALL MOBILE — 400px
+======================================================================*/
+
+@media (max-width:400px){
+
+    .navbar{
+
+        width:calc(100% - 40px);
+
+        right:-100%;
+
+    }
+
+
+    .navbar.active{
+
+        right:20px;
 
     }
 
