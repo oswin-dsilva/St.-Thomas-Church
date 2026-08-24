@@ -9,38 +9,75 @@
 
 document.addEventListener("DOMContentLoaded", function(){
 
-
-    /*=================================================================
-        ELEMENTS
-    =================================================================*/
-
     const header =
         document.querySelector(".header");
-
 
     const navbar =
         document.querySelector(".navbar");
 
-
     const menuBtn =
         document.querySelector(".menu-btn");
-
 
     const hero =
         document.querySelector(".hero");
 
-
     const heroImage =
         document.querySelector(".hero-image");
-
 
     const schedule =
         document.querySelector(".schedule");
 
 
+    /*=================================================================
+        2. FORCE MOBILE MENU CLOSED
+    =================================================================*/
+
+    function closeMobileMenu(){
+
+        document.body.classList.remove("menu-open");
+
+        if(navbar){
+
+            navbar.classList.remove("active");
+
+        }
+
+        if(menuBtn){
+
+            menuBtn.classList.remove("open");
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            const icon =
+                menuBtn.querySelector("i");
+
+
+            if(icon){
+
+                icon.classList.remove(
+                    "fa-xmark"
+                );
+
+                icon.classList.add(
+                    "fa-bars"
+                );
+
+            }
+
+        }
+
+    }
+
+
+    closeMobileMenu();
+
 
     /*=================================================================
-        2. HEADER SCROLL BEHAVIOUR
+        3. HEADER SCROLL BEHAVIOUR
     =================================================================*/
 
     function handleHeaderScroll(){
@@ -52,22 +89,10 @@ document.addEventListener("DOMContentLoaded", function(){
         }
 
 
-        /*
-        ---------------------------------------------------------------
-        Determine where the hero section ends
-        ---------------------------------------------------------------
-        */
-
         const heroBottom =
             hero.offsetTop +
             hero.offsetHeight;
 
-
-        /*
-        ---------------------------------------------------------------
-        Add/remove normal scrolled class
-        ---------------------------------------------------------------
-        */
 
         if(window.scrollY > 50){
 
@@ -83,12 +108,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
         }
 
-
-        /*
-        ---------------------------------------------------------------
-        Hide desktop navigation after Hero
-        ---------------------------------------------------------------
-        */
 
         if(
             window.scrollY >=
@@ -110,17 +129,13 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-
     /*=================================================================
-        3. HERO → MASS TIMINGS TRANSITION
+        4. HERO → MASS TIMINGS TRANSITION
     =================================================================*/
 
     function handleHeroTransition(){
 
-        if(
-            !hero ||
-            !schedule
-        ){
+        if(!hero || !schedule){
 
             return;
 
@@ -135,12 +150,6 @@ document.addEventListener("DOMContentLoaded", function(){
             hero.offsetHeight;
 
 
-        /*
-        ---------------------------------------------------------------
-        Start the transition before reaching Mass Timings
-        ---------------------------------------------------------------
-        */
-
         const transitionStart =
             heroHeight * 0.55;
 
@@ -149,16 +158,6 @@ document.addEventListener("DOMContentLoaded", function(){
             heroHeight * 0.45;
 
 
-        /*
-        ---------------------------------------------------------------
-        Calculate transition progress
-
-        0 = Hero completely visible
-
-        1 = Mass Timings completely visible
-        ---------------------------------------------------------------
-        */
-
         let progress =
             (
                 scrollPosition -
@@ -166,12 +165,6 @@ document.addEventListener("DOMContentLoaded", function(){
             ) /
             transitionDistance;
 
-
-        /*
-        ---------------------------------------------------------------
-        Keep value between 0 and 1
-        ---------------------------------------------------------------
-        */
 
         progress =
             Math.max(
@@ -183,19 +176,11 @@ document.addEventListener("DOMContentLoaded", function(){
             );
 
 
-
-        /*-------------------------------------------------------------
-            HERO IMAGE ZOOM
-        -------------------------------------------------------------*/
-
         if(heroImage){
 
             const zoom =
                 1 +
-                (
-                    progress *
-                    0.07
-                );
+                (progress * 0.07);
 
 
             heroImage.style.transform =
@@ -204,323 +189,30 @@ document.addEventListener("DOMContentLoaded", function(){
         }
 
 
+        /*
+        Only manipulate the desktop schedule background.
 
-        /*-------------------------------------------------------------
-            MASS TIMINGS BACKGROUND MOVEMENT
-        -------------------------------------------------------------*/
+        Mobile uses ::before so its separate image is
+        not overwritten.
+        */
 
-        const backgroundPosition =
-            50 -
-            (
-                progress *
-                3
-            );
+        if(window.innerWidth > 900){
 
+            const backgroundPosition =
+                50 -
+                (progress * 3);
 
-        schedule.style.backgroundPosition =
-            `center ${backgroundPosition}%`;
 
-    }
-
-
-
-    /*=================================================================
-        4. COMBINED SCROLL HANDLER
-    =================================================================*/
-
-    function handleScroll(){
-
-        handleHeaderScroll();
-
-        handleHeroTransition();
-
-        updateActiveNavigation();
-
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        handleScroll,
-        {
-            passive:true
-        }
-    );
-
-
-    /*
-    ---------------------------------------------------------------
-    Run once on page load
-    ---------------------------------------------------------------
-    */
-
-    handleScroll();
-
-
-
-    /*=================================================================
-        5. MOBILE MENU
-    =================================================================*/
-
-    if(
-        menuBtn &&
-        navbar
-    ){
-
-        menuBtn.addEventListener(
-            "click",
-            function(){
-
-                /*
-                -------------------------------------------------------
-                Toggle menu
-                -------------------------------------------------------
-                */
-
-                navbar.classList.toggle(
-                    "active"
-                );
-
-
-                menuBtn.classList.toggle(
-                    "open"
-                );
-
-
-                /*
-                -------------------------------------------------------
-                Accessibility
-                -------------------------------------------------------
-                */
-
-                const isOpen =
-                    navbar.classList.contains(
-                        "active"
-                    );
-
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                        ? "true"
-                        : "false"
-                );
-
-
-                /*
-                -------------------------------------------------------
-                Hamburger icon
-                -------------------------------------------------------
-                */
-
-                const icon =
-                    menuBtn.querySelector(
-                        "i"
-                    );
-
-
-                if(icon){
-
-                    if(isOpen){
-
-                        icon.classList.remove(
-                            "fa-bars"
-                        );
-
-
-                        icon.classList.add(
-                            "fa-xmark"
-                        );
-
-                    }else{
-
-                        icon.classList.remove(
-                            "fa-xmark"
-                        );
-
-
-                        icon.classList.add(
-                            "fa-bars"
-                        );
-
-                    }
-
-                }
-
-            }
-        );
-
-    }
-
-
-
-    /*=================================================================
-        6. CLOSE MOBILE MENU WHEN LINK IS CLICKED
-    =================================================================*/
-
-    if(navbar){
-
-        const navLinks =
-            navbar.querySelectorAll(
-                "a"
-            );
-
-
-        navLinks.forEach(
-            function(link){
-
-                link.addEventListener(
-                    "click",
-                    function(){
-
-                        /*
-                        ------------------------------------------------
-                        Close menu
-                        ------------------------------------------------
-                        */
-
-                        navbar.classList.remove(
-                            "active"
-                        );
-
-
-                        /*
-                        ------------------------------------------------
-                        Reset button
-                        ------------------------------------------------
-                        */
-
-                        if(menuBtn){
-
-                            menuBtn.classList.remove(
-                                "open"
-                            );
-
-
-                            menuBtn.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-                        }
-
-
-                        /*
-                        ------------------------------------------------
-                        Reset icon
-                        ------------------------------------------------
-                        */
-
-                        const icon =
-                            menuBtn
-                                ? menuBtn.querySelector(
-                                    "i"
-                                )
-                                : null;
-
-
-                        if(icon){
-
-                            icon.classList.remove(
-                                "fa-xmark"
-                            );
-
-
-                            icon.classList.add(
-                                "fa-bars"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-    }
-
-
-
-    /*=================================================================
-        7. SMOOTH SCROLLING
-    =================================================================*/
-
-    const allAnchorLinks =
-        document.querySelectorAll(
-            'a[href^="#"]'
-        );
-
-
-    allAnchorLinks.forEach(
-        function(link){
-
-            link.addEventListener(
-                "click",
-                function(event){
-
-                    const targetId =
-                        this.getAttribute(
-                            "href"
-                        );
-
-
-                    /*
-                    ----------------------------------------------------
-                    Ignore empty links
-                    ----------------------------------------------------
-                    */
-
-                    if(
-                        !targetId ||
-                        targetId === "#"
-                    ){
-
-                        return;
-
-                    }
-
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-
-                    if(!target){
-
-                        return;
-
-                    }
-
-
-                    event.preventDefault();
-
-
-                    /*
-                    ----------------------------------------------------
-                    Smooth scroll
-                    ----------------------------------------------------
-                    */
-
-                    target.scrollIntoView({
-
-                        behavior:"smooth",
-
-                        block:"start"
-
-                    });
-
-                }
-            );
+            schedule.style.backgroundPosition =
+                `center ${backgroundPosition}%`;
 
         }
-    );
 
+    }
 
 
     /*=================================================================
-        8. ACTIVE NAVIGATION
+        5. ACTIVE NAVIGATION
     =================================================================*/
 
     const sections =
@@ -604,9 +296,195 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
+    /*=================================================================
+        6. COMBINED SCROLL HANDLER
+    =================================================================*/
+
+    function handleScroll(){
+
+        handleHeaderScroll();
+
+        handleHeroTransition();
+
+        updateActiveNavigation();
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        handleScroll,
+        {
+            passive:true
+        }
+    );
+
+
+    handleScroll();
+
 
     /*=================================================================
-        9. PRELOADER
+        7. MOBILE MENU TOGGLE
+    =================================================================*/
+
+    if(menuBtn && navbar){
+
+        menuBtn.addEventListener(
+            "click",
+            function(){
+
+                const isOpen =
+                    document.body.classList.toggle(
+                        "menu-open"
+                    );
+
+
+                navbar.classList.toggle(
+                    "active",
+                    isOpen
+                );
+
+
+                menuBtn.classList.toggle(
+                    "open",
+                    isOpen
+                );
+
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                        ? "true"
+                        : "false"
+                );
+
+
+                const icon =
+                    menuBtn.querySelector("i");
+
+
+                if(icon){
+
+                    if(isOpen){
+
+                        icon.classList.remove(
+                            "fa-bars"
+                        );
+
+                        icon.classList.add(
+                            "fa-xmark"
+                        );
+
+                    }else{
+
+                        icon.classList.remove(
+                            "fa-xmark"
+                        );
+
+                        icon.classList.add(
+                            "fa-bars"
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /*=================================================================
+        8. CLOSE MENU AFTER NAVIGATION CLICK
+    =================================================================*/
+
+    if(navbar){
+
+        navbar
+            .querySelectorAll("a")
+            .forEach(
+                function(link){
+
+                    link.addEventListener(
+                        "click",
+                        function(){
+
+                            closeMobileMenu();
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+
+
+    /*=================================================================
+        9. SMOOTH ANCHOR SCROLLING
+    =================================================================*/
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(
+            function(link){
+
+                link.addEventListener(
+                    "click",
+                    function(event){
+
+                        const targetId =
+                            this.getAttribute(
+                                "href"
+                            );
+
+
+                        if(
+                            !targetId ||
+                            targetId === "#"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+
+                        if(!target){
+
+                            return;
+
+                        }
+
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+
+                            behavior:"smooth",
+
+                            block:"start"
+
+                        });
+
+                    }
+                );
+
+            }
+        );
+
+
+    /*=================================================================
+        10. PRELOADER
     =================================================================*/
 
     const preloader =
@@ -631,9 +509,8 @@ document.addEventListener("DOMContentLoaded", function(){
     );
 
 
-
     /*=================================================================
-        10. RESIZE HANDLING
+        11. RESIZE HANDLING
     =================================================================*/
 
     window.addEventListener(
@@ -646,116 +523,312 @@ document.addEventListener("DOMContentLoaded", function(){
 
             updateActiveNavigation();
 
+
+            /*
+            Keep mobile menu closed when
+            switching back to desktop.
+            */
+
+            if(window.innerWidth > 900){
+
+                closeMobileMenu();
+
+            }
+
         }
     );
 
 
+    /*=================================================================
+        12. KEEP MENU CLOSED ON PAGE RESTORE
+    =================================================================*/
+
+    window.addEventListener(
+        "pageshow",
+        function(){
+
+            closeMobileMenu();
+
+        }
+    );
+
 });
 
+
 /*=====================================================================
-    FULL PAGE SECTION SCROLL
+    13. ONE-SECTION-AT-A-TIME DESKTOP SCROLL
+
+    Desktop mouse/trackpad only.
+    Mobile touch scrolling is NOT intercepted.
 ======================================================================*/
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
 
-    const sections = [
-        document.querySelector(".hero"),
-        document.querySelector(".schedule"),
-        document.querySelector(".about"),
-        document.querySelector(".gallery"),
-        document.querySelector(".reviews"),
-        document.querySelector(".suvarta"),
-        document.querySelector(".contact")
-    ].filter(Boolean);
+        const pageSections = [
 
-    let currentSection = 0;
-    let isScrolling = false;
+            document.querySelector(
+                ".hero"
+            ),
 
-    function goToSection(index) {
+            document.querySelector(
+                ".schedule"
+            ),
 
-        if (index < 0 || index >= sections.length) {
+            document.querySelector(
+                ".about"
+            ),
+
+            document.querySelector(
+                ".gallery"
+            ),
+
+            document.querySelector(
+                ".reviews"
+            ),
+
+            document.querySelector(
+                ".suvarta"
+            ),
+
+            document.querySelector(
+                ".contact"
+            )
+
+        ].filter(Boolean);
+
+
+        if(!pageSections.length){
+
             return;
-        }
-
-        currentSection = index;
-
-        isScrolling = true;
-
-        sections[currentSection].scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-        setTimeout(function () {
-            isScrolling = false;
-        }, 900);
-
-    }
-
-
-    window.addEventListener("wheel", function (event) {
-
-        /*
-         * Ignore very small trackpad movements.
-         */
-        if (Math.abs(event.deltaY) < 20) {
-            return;
-        }
-
-        /*
-         * Prevent continuous browser scrolling.
-         */
-        event.preventDefault();
-
-        if (isScrolling) {
-            return;
-        }
-
-        if (event.deltaY > 0) {
-
-            // Scroll DOWN
-            goToSection(currentSection + 1);
-
-        } else {
-
-            // Scroll UP
-            goToSection(currentSection - 1);
 
         }
 
-    }, {
-        passive: false
-    });
+
+        let currentSection = 0;
+
+        let isScrolling = false;
 
 
-    /*
-     * Keep the section index synchronized if the user
-     * navigates using the menu or other links.
-     */
-    window.addEventListener("scroll", function () {
+        /*-------------------------------------------------------------
+            FIND CURRENT SECTION
+        -------------------------------------------------------------*/
 
-        if (isScrolling) {
-            return;
+        function updateCurrentSection(){
+
+            const position =
+                window.scrollY +
+                (
+                    window.innerHeight *
+                    0.5
+                );
+
+
+            pageSections.forEach(
+                function(
+                    section,
+                    index
+                ){
+
+                    const top =
+                        section.offsetTop;
+
+
+                    const bottom =
+                        top +
+                        section.offsetHeight;
+
+
+                    if(
+                        position >= top &&
+                        position < bottom
+                    ){
+
+                        currentSection =
+                            index;
+
+                    }
+
+                }
+            );
+
         }
 
-        const scrollPosition = window.scrollY + (window.innerHeight * 0.4);
 
-        sections.forEach(function (section, index) {
+        /*-------------------------------------------------------------
+            MOVE TO SECTION
+        -------------------------------------------------------------*/
 
-            const top = section.offsetTop;
-            const bottom = top + section.offsetHeight;
+        function goToSection(index){
 
-            if (
-                scrollPosition >= top &&
-                scrollPosition < bottom
-            ) {
+            if(index < 0){
 
-                currentSection = index;
+                index = 0;
 
             }
 
-        });
 
-    });
+            if(
+                index >=
+                pageSections.length
+            ){
 
-});
+                index =
+                    pageSections.length -
+                    1;
+
+            }
+
+
+            if(
+                isScrolling ||
+                index === currentSection
+            ){
+
+                return;
+
+            }
+
+
+            currentSection =
+                index;
+
+
+            isScrolling = true;
+
+
+            pageSections[
+                currentSection
+            ].scrollIntoView({
+
+                behavior:"smooth",
+
+                block:"start"
+
+            });
+
+
+            setTimeout(
+                function(){
+
+                    isScrolling = false;
+
+                    updateCurrentSection();
+
+                },
+                900
+            );
+
+        }
+
+
+        /*-------------------------------------------------------------
+            DESKTOP WHEEL SCROLL
+        -------------------------------------------------------------*/
+
+        window.addEventListener(
+            "wheel",
+            function(event){
+
+                const desktopPointer =
+                    window.matchMedia(
+                        "(hover: hover) and (pointer: fine)"
+                    ).matches;
+
+
+                /*
+                Do nothing on mobile/touch devices.
+                */
+
+                if(!desktopPointer){
+
+                    return;
+
+                }
+
+
+                if(
+                    Math.abs(
+                        event.deltaY
+                    ) < 20
+                ){
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+
+                if(isScrolling){
+
+                    return;
+
+                }
+
+
+                updateCurrentSection();
+
+
+                if(event.deltaY > 0){
+
+                    goToSection(
+                        currentSection + 1
+                    );
+
+                }else{
+
+                    goToSection(
+                        currentSection - 1
+                    );
+
+                }
+
+            },
+            {
+                passive:false
+            }
+        );
+
+
+        /*-------------------------------------------------------------
+            NORMAL SCROLL SYNCHRONIZATION
+        -------------------------------------------------------------*/
+
+        window.addEventListener(
+            "scroll",
+            function(){
+
+                if(!isScrolling){
+
+                    updateCurrentSection();
+
+                }
+
+            },
+            {
+                passive:true
+            }
+        );
+
+
+        /*-------------------------------------------------------------
+            RESIZE
+        -------------------------------------------------------------*/
+
+        window.addEventListener(
+            "resize",
+            function(){
+
+                updateCurrentSection();
+
+            }
+        );
+
+
+        updateCurrentSection();
+
+    }
+);
