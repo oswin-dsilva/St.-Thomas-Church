@@ -651,3 +651,111 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 });
+
+/*=====================================================================
+    FULL PAGE SECTION SCROLL
+======================================================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sections = [
+        document.querySelector(".hero"),
+        document.querySelector(".schedule"),
+        document.querySelector(".about"),
+        document.querySelector(".gallery"),
+        document.querySelector(".reviews"),
+        document.querySelector(".suvarta"),
+        document.querySelector(".contact")
+    ].filter(Boolean);
+
+    let currentSection = 0;
+    let isScrolling = false;
+
+    function goToSection(index) {
+
+        if (index < 0 || index >= sections.length) {
+            return;
+        }
+
+        currentSection = index;
+
+        isScrolling = true;
+
+        sections[currentSection].scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        setTimeout(function () {
+            isScrolling = false;
+        }, 900);
+
+    }
+
+
+    window.addEventListener("wheel", function (event) {
+
+        /*
+         * Ignore very small trackpad movements.
+         */
+        if (Math.abs(event.deltaY) < 20) {
+            return;
+        }
+
+        /*
+         * Prevent continuous browser scrolling.
+         */
+        event.preventDefault();
+
+        if (isScrolling) {
+            return;
+        }
+
+        if (event.deltaY > 0) {
+
+            // Scroll DOWN
+            goToSection(currentSection + 1);
+
+        } else {
+
+            // Scroll UP
+            goToSection(currentSection - 1);
+
+        }
+
+    }, {
+        passive: false
+    });
+
+
+    /*
+     * Keep the section index synchronized if the user
+     * navigates using the menu or other links.
+     */
+    window.addEventListener("scroll", function () {
+
+        if (isScrolling) {
+            return;
+        }
+
+        const scrollPosition = window.scrollY + (window.innerHeight * 0.4);
+
+        sections.forEach(function (section, index) {
+
+            const top = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+
+            if (
+                scrollPosition >= top &&
+                scrollPosition < bottom
+            ) {
+
+                currentSection = index;
+
+            }
+
+        });
+
+    });
+
+});
