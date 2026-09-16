@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog | St. Thomas Church</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(212, 175, 55, 0.08),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #071812,
+                    #0b241a,
+                    #06120d
+                );
+            color: #f4f0e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+
+        /* =========================================================
+           CHURCH LOGO
+        ========================================================= */
+
+        .blog-logo {
+            position: absolute;
+            top: 28px;
+            left: 40px;
+            z-index: 10;
+            display: block;
+        }
+
+        .blog-logo img {
+            width: 150px;
+            height: auto;
+            display: block;
+        }
+
+
+        /* =========================================================
+           BLOG PAGE
+        ========================================================= */
+
+        .blog-page {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+
+        .blog-container {
+            text-align: center;
+            max-width: 850px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================================
+           CHURCH ICON
+        ========================================================= */
+
+        .church-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 35px;
+
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #d4af37;
+            font-size: 32px;
+
+            box-shadow:
+                0 0 30px rgba(212, 175, 55, 0.08),
+                inset 0 0 20px rgba(212, 175, 55, 0.04);
+
+            animation: float 4s ease-in-out infinite;
+        }
+
+
+        /* =========================================================
+           EYEBROW
+        ========================================================= */
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #d4af37;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+
+        /* =========================================================
+           MAIN TITLE
+        ========================================================= */
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(70px, 13vw, 150px);
+            line-height: 0.78;
+            font-weight: 500;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+        }
+
+        h1 span {
+            display: block;
+        }
+
+        h1 .soon {
+            color: #d4af37;
+        }
+
+
+        /* =========================================================
+           DESCRIPTION
+        ========================================================= */
+
+        .description {
+            max-width: 650px;
+            margin: 0 auto;
+
+            color: rgba(244, 240, 230, 0.72);
+
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+
+        /* =========================================================
+           GOLD LINE
+        ========================================================= */
+
+        .gold-line {
+            width: 70px;
+            height: 1px;
+
+            background: #d4af37;
+
+            margin: 38px auto;
+            opacity: 0.8;
+        }
+
+
+        /* =========================================================
+           BACK BUTTON
+        ========================================================= */
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #d4af37;
+            text-decoration: none;
+
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 15px;
+            color: #f4f0e6;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer-text {
+            position: absolute;
+
+            bottom: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            color: rgba(244, 240, 230, 0.35);
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           BACKGROUND GLOW
+        ========================================================= */
+
+        .glow {
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background: rgba(212, 175, 55, 0.025);
+
+            filter: blur(80px);
+
+            pointer-events: none;
+        }
+
+        .glow-one {
+            top: -250px;
+            left: -200px;
+        }
+
+        .glow-two {
+            bottom: -280px;
+            right: -200px;
+        }
+
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+
+        @keyframes reveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .blog-container {
+            animation: reveal 1s ease forwards;
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .blog-page {
+                padding: 30px 20px;
+            }
+
+
+            /* Mobile logo */
+
+            .blog-logo {
+                top: 20px;
+                left: 20px;
+            }
+
+            .blog-logo img {
+                width: 95px;
+            }
+
+
+            .church-icon {
+                width: 75px;
+                height: 75px;
+
+                font-size: 27px;
+
+                margin-bottom: 28px;
+            }
+
+
+            .eyebrow {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+
+            h1 {
+                font-size: clamp(65px, 20vw, 100px);
+
+                letter-spacing: -2px;
+
+                margin-bottom: 28px;
+            }
+
+
+            .description {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+
+            .gold-line {
+                margin: 30px auto;
+            }
+
+
+            .footer-text {
+                bottom: 18px;
+
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         CHURCH LOGO
+         NON-CLICKABLE
+    ========================================================= -->
+
+    <div class="blog-logo">
+
+        <img src="images/logo.png"
+             alt="St. Thomas Church logo">
+
+    </div>
+
+
+    <!-- =========================================================
+         BLOG PAGE
+    ========================================================= -->
+
+    <div class="blog-page">
+
+        <div class="glow glow-one"></div>
+
+        <div class="glow glow-two"></div>
+
+
+        <div class="blog-container">
+
+
+            <div class="church-icon">
+
+                <i class="fa-solid fa-cross"></i>
+
+            </div>
+
+
+            <div class="eyebrow">
+
+                St. Thomas Church · Sandor
+
+            </div>
+
+
+            <h1>
+
+                <span>Coming</span>
+
+                <span class="soon">Soon</span>
+
+            </h1>
+
+
+            <div class="description">
+
+                Our parish blog is currently being prepared.
+
+            </div>
+
+
+            <div class="gold-line"></div>
+
+
+            <a href="index.html"
+               class="back-link">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back
+
+            </a>
+
+
+        </div>
+
+
+        <div class="footer-text">
+
+            Faith · Community · Service
+
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>
